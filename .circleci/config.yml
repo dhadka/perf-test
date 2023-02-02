@@ -12,9 +12,9 @@ jobs:
       - run:
           command: sudo apt-get install sysbench
       - run:
-	  command: sysbench cpu run
+          command: sysbench cpu run
       - run:
-	  command: sysbench --threads=16 cpu run
+          command: sysbench --threads=16 cpu run
       - run:
           command: sysbench memory run
       - run:
