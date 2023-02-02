@@ -10,7 +10,9 @@ jobs:
       - run:
           command: curl -O -L --retry 5 -f https://github.com/actions/runner/releases/download/v2.300.0/actions-runner-linux-x64-2.300.0.tar.gz
       - run:
-          command: sudo apt-get install sysbench
+          command: |
+            sudo apt-get update
+            sudo apt-get install sysbench
       - run:
           command: sysbench cpu run
       - run:
