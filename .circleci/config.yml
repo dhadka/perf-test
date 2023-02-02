@@ -1,0 +1,19 @@
+version: 2.1
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:2022.10.1
+    steps:
+      - checkout
+      - run:
+          command: curl -O -L --retry 5 -f https://github.com/actions/runner/releases/download/v2.300.0/actions-runner-linux-x64-2.300.0.tar.gz
+      - run:
+			    command: sudo apt-get install sysbench
+      - run:
+			    command: sysbench cpu run
+      - run:
+			    command: sysbench --threads=16 cpu run
+      - run:
+			    command: sysbench memory run
+      - run:
+          command: sysbench fileio --file-test-mode=seqwr run
